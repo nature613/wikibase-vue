@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "webpack && node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "module-alias": "^2.0.1",
     "vue": "^2.4.2",
-    "vue-server-renderer": "^2.4.2"
+    "vue-server-renderer": "^2.4.2",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.5"
   }
 }
