@@ -24,7 +24,7 @@ Vue.use(Vuex)
 var store = new Vuex.Store( newLemmaWidgetStore( null, [], '', '' ) );
 const LemmaWidget = new Vue(require('./src/widgets/LemmaWidget.newLemmaWidget')(
   store,
-  '#lemmas-widget',
+  undefined,
   '<div>{{hi}}</div>"'
 ))
 
