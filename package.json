@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack && node index.js"
+    "start": "webpack && node index.js",
+    "test": "jasmine ./test/*.spec.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,11 @@
     "vuex": "^2.3.1"
   },
   "devDependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "jasmine": "^2.7.0",
+    "jsdom": "^11.2.0",
+    "unexpected": "^10.33.2",
+    "unexpected-dom": "^4.0.0",
     "webpack": "^3.5.5"
   }
 }
