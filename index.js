@@ -11,31 +11,6 @@ const renderer = createBundleRenderer(path.resolve('./build/vue-ssr-server-bundl
   runInNewContext: true
 })
 
-global.mediaWiki = {
-  messages: {
-    get: function (id) {
-      return id;
-    }
-  },
-
-  config: {
-    get: function (id) {
-      return JSON.stringify({
-        lemmas: []
-      });
-    }
-  },
-  Api: function () {}
-}
-
-global.wikibase = {
-  api: {
-    RepoApi: function () {
-
-    }
-  }
-}
-
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );
 
