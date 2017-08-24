@@ -1,6 +1,7 @@
 const process = require('process')
 const path = require('path')
-const server = require('./server');
+const createServer = require('./server');
+const server = createServer();
 
 process.on('unhandledRejection', function (reason, promise) {
     console.log(reason, promise)
