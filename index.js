@@ -7,7 +7,7 @@ const process = require('process')
 const path = require('path')
 const { createBundleRenderer } = require('vue-server-renderer')
 
-const renderer = createBundleRenderer(path.resolve('./vue-ssr-server-bundle.json'), {
+const renderer = createBundleRenderer(path.resolve('./build/vue-ssr-server-bundle.json'), {
   runInNewContext: true
 })
 
