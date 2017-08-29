@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack && node index.js",
+    "start": "webpack --config ./webpack/server.config.js && node ./src/server/index.js",
     "test": "jasmine ./test/*.spec.js"
   },
   "author": "",

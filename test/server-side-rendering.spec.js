@@ -3,7 +3,7 @@ const unexpectedDOM = require('unexpected-dom');
 const expect = unexpected.clone().use(unexpectedDOM);
 const fetch = require('isomorphic-fetch');
 
-const createServer = require('../server.js');
+const createServer = require('../src/server/server.js');
 
 describe('Vue SSR', () => {
     const port = 3001;

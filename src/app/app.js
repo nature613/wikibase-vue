@@ -18,11 +18,11 @@ global.mediaWiki = {
   Api: function () {}
 }
 
-var newLemmaWidgetStore = require( './src/widgets/LemmaWidget.newLemmaWidgetStore' );
+var newLemmaWidgetStore = require( './widgets/LemmaWidget.newLemmaWidgetStore' );
 Vue.use(Vuex)
 
 var store = new Vuex.Store( newLemmaWidgetStore( null, [], '', '' ) );
-const LemmaWidget = new Vue(require('./src/widgets/LemmaWidget.newLemmaWidget')(
+const LemmaWidget = new Vue(require('./widgets/LemmaWidget.newLemmaWidget')(
   store,
   undefined,
   '<div>{{hi}}</div>"'
