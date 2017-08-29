@@ -8,7 +8,6 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const clientManifest = require(path.resolve('./build/vue-ssr-client-manifest.json'));
 const serverBundle = require(path.resolve('./build/vue-ssr-server-bundle.json'));
 
-
 module.exports = () => {
   const app = express();
 
@@ -35,7 +34,11 @@ module.exports = () => {
   })
 
   app.post('/lemma-widget', function (req, res) {
-      renderer.renderToString((err, html) => {
+      const context = {
+          lemmas: req.body.lemmas || []
+      }
+
+      renderer.renderToString(context, (err, html) => {
           if (err) throw err
           res.send(html)
       })

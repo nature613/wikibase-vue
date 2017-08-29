@@ -5,6 +5,6 @@ const newLemmaWidgetStore = require( './widgets/LemmaWidget.newLemmaWidgetStore'
 
 Vue.use(Vuex)
 
-export default () => {
-    return new Vuex.Store( newLemmaWidgetStore( null, [], '', '' ) );
+export default (lemmas) => {
+    return new Vuex.Store( newLemmaWidgetStore( null, lemmas, '', '' ) );
 }
