@@ -36,6 +36,21 @@ module.exports = () => {
       })
   })
 
+  app.get('/lemma-widget', (req, res) => {
+    const context = {
+        state: {
+            lemmas: [{
+                value: 'my value',
+                language: 'en'
+            }]
+        }
+    };
+    renderer.renderToString(context, (err, html) => {
+        if (err) throw err
+        res.send(html)
+    });
+  });
+
   app.post('/lemma-widget', function (req, res) {
       const context = {
           state: {
