@@ -22,20 +22,6 @@ module.exports = () => {
 
   app.get(/\.js$/, express.static('./build'));
 
-  app.post('/', function (req, res) {
-      console.log(req.body)
-
-      const component = new Vue({
-          data: req.body.data,
-          template: req.body.template
-      })
-
-      renderer.renderToString(component, (err, html) => {
-          if (err) throw err
-          res.send(html)
-      })
-  })
-
   app.get('/lemma-widget', (req, res) => {
     const context = {
         state: {
