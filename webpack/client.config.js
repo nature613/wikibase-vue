@@ -5,7 +5,7 @@ const path = require('path');
 const baseConfig = require('./base.config.js');
 
 module.exports = merge(baseConfig, {
-    entry: './src/app/app.js',
+    entry: './src/app/app-client.js',
     target: 'web',
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({

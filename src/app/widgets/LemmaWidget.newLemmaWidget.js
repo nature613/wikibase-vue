@@ -1,4 +1,4 @@
-const template = `<div class="lemma-widget">
+const template = `<div id="app" class="lemma-widget">
 	<ul v-if="!inEditMode" class="lemma-widget_lemma-list">
 		<li v-for="lemma in lemmas" class="lemma-widget_lemma">
 			<span class="lemma-widget_lemma-value">{{lemma.value}}</span>

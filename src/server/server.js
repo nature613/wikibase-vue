@@ -13,11 +13,14 @@ module.exports = () => {
 
   const renderer = createBundleRenderer(serverBundle, {
       runInNewContext: true,
-      clientManifest
+      clientManifest,
+      template: `<!--vue-ssr-outlet-->`
   })
 
   var bodyParser = require('body-parser')
   app.use( bodyParser.json() );
+
+  app.get(/\.js$/, express.static('./build'));
 
   app.post('/', function (req, res) {
       console.log(req.body)
@@ -35,7 +38,9 @@ module.exports = () => {
 
   app.post('/lemma-widget', function (req, res) {
       const context = {
-          lemmas: req.body.lemmas || []
+          state: {
+              lemmas: req.body.lemmas || []
+          }
       }
 
       renderer.renderToString(context, (err, html) => {
