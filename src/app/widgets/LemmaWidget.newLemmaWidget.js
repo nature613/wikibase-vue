@@ -58,9 +58,8 @@ module.exports = ( function ( mw ) {
 	 *
 	 * @param {Vuex.Store} store
 	 * @param {string} element
-	 * @param {string} template - template string or selector
 	 */
-	return function ( store, element, template ) {
+	return function ( store, element ) {
 		return {
 			el: element,
 			template: template,
