@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf ./build/ && webpack --config ./webpack/server.config.js",
     "start": "npm run build && node ./src/server/index.js",
-    "test":  "npm run build && jasmine ./test/*.spec.js"
+    "test": "npm run build && jasmine ./test/*.spec.js"
   },
   "author": "",
   "license": "ISC",
