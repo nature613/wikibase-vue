@@ -57,11 +57,9 @@ module.exports = ( function ( mw ) {
 	 * @callback wikibase.lexeme.widgets.LemmaWidget.newComponent
 	 *
 	 * @param {Vuex.Store} store
-	 * @param {string} element
 	 */
-	return function ( store, element ) {
+	return function ( store ) {
 		return {
-			el: element,
 			template: template,
 			data: {
 				isInitialized: true,
