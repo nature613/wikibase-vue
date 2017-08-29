@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/app/app.js',
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/build',
+    path: path.resolve('./build/'),
     libraryTarget: 'commonjs2'
   },
   target: 'node',
