@@ -8,7 +8,6 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const clientManifest = require(path.resolve('./build/vue-ssr-client-manifest.json'));
 const serverBundle = require(path.resolve('./build/vue-ssr-server-bundle.json'));
 
-Vue.use(Vuex)
 
 module.exports = () => {
   const app = express();

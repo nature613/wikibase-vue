@@ -1,5 +1,5 @@
 import Vue from 'vue/dist/vue.common.js';
-import Vuex from 'vuex';
+import createStore from './store.js';
 
 global.mediaWiki = {
   messages: {
@@ -18,12 +18,8 @@ global.mediaWiki = {
   Api: function () {}
 }
 
-var newLemmaWidgetStore = require( './widgets/LemmaWidget.newLemmaWidgetStore' );
-Vue.use(Vuex)
-
-var store = new Vuex.Store( newLemmaWidgetStore( null, [], '', '' ) );
 const LemmaWidget = new Vue(require('./widgets/LemmaWidget.newLemmaWidget')(
-  store
+  createStore()
 ))
 
 export default function() {
