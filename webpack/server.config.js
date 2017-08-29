@@ -1,7 +1,10 @@
+const merge = require('webpack-merge');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const path = require('path');
 
-module.exports = {
+const baseConfig = {};
+
+module.exports = merge(baseConfig, {
   devtool: 'source-map',
   entry: './src/app/app.js',
   output: {
@@ -13,4 +16,4 @@ module.exports = {
   plugins: [
     new VueSSRServerPlugin()
   ]
-};
+});
