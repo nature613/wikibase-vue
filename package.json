@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config ./webpack/server.config.js && node ./src/server/index.js",
-    "test": "jasmine ./test/*.spec.js"
+    "test":  "webpack --config ./webpack/server.config.js && jasmine ./test/*.spec.js"
   },
   "author": "",
   "license": "ISC",
