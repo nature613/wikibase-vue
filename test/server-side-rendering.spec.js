@@ -42,13 +42,7 @@ describe('Vue SSR', () => {
     })
 
     it('renders on the server and then picks up on the client', async () => {
-        const response = await requestWidget({
-				    lemmas: [{
-                value: 'my value',
-                language: 'en'
-            }]
-        });
-
+        const response = await requestWidget(validData);
         const document = createDOM(await response.text());
 
         expect(document, 'to have been rendered on the server');
@@ -58,6 +52,13 @@ describe('Vue SSR', () => {
         expect(document, 'to have been rendered on the client');
 
     })
+
+    const validData = {
+				lemmas: [{
+            value: 'my value',
+            language: 'en'
+        }]
+    }
 
     const requestWidget = (body) => fetch(
         `http://localhost:${port}/lemma-widget`,
