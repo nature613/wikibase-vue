@@ -56,18 +56,12 @@ describe('Vue SSR', () => {
             resources: 'usable'
         }).window;
 
-        expect(
-            document.body,
-            'queried for first', '#app',
-            'to have attribute', {'data-server-rendered': true}
-        );
+        expect(document, 'to have been rendered on the server');
 
         await delay(100);
 
-        expect(
-            document.body, 'queried for first', '#app',
-            'to have attribute', {'data-server-rendered': undefined }
-        );
+        expect(document, 'to have been rendered on the client');
+
     })
 
     const requestWidget = (body) => fetch(
@@ -80,6 +74,20 @@ describe('Vue SSR', () => {
             body: JSON.stringify(body)
         });
 
+
+
+    expect.addAssertion('<HTMLDocument> to have been rendered on the server', function (expect, document)  {
+        expect(
+            document, 'queried for first', '#app',
+            'to have attribute', {'data-server-rendered': true}
+        );
+    });
+    expect.addAssertion('<HTMLDocument> to have been rendered on the client', function (expect, document)  {
+        expect(
+            document.body, 'queried for first', '#app',
+            'to have attribute', {'data-server-rendered': undefined }
+        );
+    });
 });
 
 const delay = delay => {
