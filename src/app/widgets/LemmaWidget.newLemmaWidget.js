@@ -61,14 +61,16 @@ module.exports = ( function ( mw ) {
 	return function ( store ) {
 		return {
 			template: template,
-			data: {
-				isInitialized: true,
-				inEditMode: false,
-				lemmas: copyLemmaList( store.state.lemmas )
-			},
+			data() {
+          return {
+              isInitialized: true,
+              inEditMode: false,
+              lemmas: copyLemmaList( this.$store.state.lemmas )
+          }
+      },
 			computed: {
 				isSaving: function () {
-					return store.state.isSaving;
+					return this.$store.state.isSaving;
 				}
 			},
 			methods: {
@@ -83,13 +85,13 @@ module.exports = ( function ( mw ) {
 					this.lemmas.splice( index, 1 );
 				},
 				save: function () {
-					return store.dispatch( 'save', this.lemmas ).then( function () {
+					return this.$store.dispatch( 'save', this.lemmas ).then( function () {
 						this.inEditMode = false;
 					}.bind( this ) );
 				},
 				cancel: function () {
 					this.inEditMode = false;
-					this.lemmas = copyLemmaList( store.state.lemmas );
+					this.lemmas = copyLemmaList( this.$store.state.lemmas );
 				}
 			},
 			filters: {
