@@ -17,11 +17,6 @@ describe('Vue SSR', () => {
         const body = await response.text();
 
         expect(response.status, 'to be', 200);
-        expect(
-            body,
-            'parsed as html', 'queried for first', '#app',
-            'to have attribute', {'data-server-rendered': true}
-        );
     })
 
     it('renders a lemma from the request payload', async () => {
@@ -33,7 +28,6 @@ describe('Vue SSR', () => {
         });
         const body = await response.text();
 
-        expect(response.status, 'to be', 200);
         expect(
             body,
             'parsed as html', 'queried for first', '.lemma-widget_lemma-value',
