@@ -10,16 +10,7 @@ global.mediaWiki = {
     get: function (id) {
       return id;
     }
-  },
-
-  config: {
-    get: function (id) {
-      return JSON.stringify({
-        lemmas: []
-      });
-    }
-  },
-  Api: function () {}
+  }
 }
 
 export default function(state) {
