@@ -8,6 +8,7 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
 const baseConfig ={
+    entry: [ './src/app/globals.js' ],
     output: {
         filename: '[name].js',
         path: path.resolve('./build/'),
@@ -15,7 +16,7 @@ const baseConfig ={
 };
 
 const clientConfig = merge(baseConfig, {
-    entry: './src/app/app-client.js',
+    entry:[ './src/app/app-client.js' ],
     target: 'web',
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -27,7 +28,7 @@ const clientConfig = merge(baseConfig, {
 });
 
 const serverConfig = merge(baseConfig, {
-    entry: './src/app/app-server.js',
+    entry: [ './src/app/app-server.js' ],
     target: 'node',
     devtool: 'source-map',
     output: {

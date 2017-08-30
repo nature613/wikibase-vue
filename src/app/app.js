@@ -5,14 +5,6 @@ import Lemma from './datamodel/Lemma.js';
 
 Vue.use(Vuex);
 
-global.mediaWiki = {
-  messages: {
-    get: function (id) {
-      return id;
-    }
-  }
-}
-
 export default function(state) {
     const lemmas = state.lemmas.map(lemma => new Lemma(lemma.value, lemma.language));
     const store = createStore(lemmas);
