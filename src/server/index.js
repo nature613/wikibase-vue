@@ -8,3 +8,4 @@ process.on('unhandledRejection', function (reason, promise) {
 })
 
 server.listen(3000, "0.0.0.0")
+console.log('Server started.');
