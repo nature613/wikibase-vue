@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf ./build/ && webpack --config ./webpack/webpack.config.js",
+    "build": "rm -rf ./build/ && webpack --config ./webpack.config.js",
     "start": "npm run build && nodemon ./src/server/index.js",
     "start-in-docker": "npm run build && nodemon -L ./src/server/index.js",
     "test": "npm run build && jasmine ./test/*.spec.js"
