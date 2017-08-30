@@ -48,13 +48,8 @@ describe('Vue SSR', () => {
                 language: 'en'
             }]
         });
-        const body = await response.text();
 
-        const {document} = new JSDOM(body, {
-            url: `http://localhost:${port}`,
-            runScripts: 'dangerously',
-            resources: 'usable'
-        }).window;
+        const document = createDOM(await response.text());
 
         expect(document, 'to have been rendered on the server');
 
@@ -74,7 +69,14 @@ describe('Vue SSR', () => {
             body: JSON.stringify(body)
         });
 
-
+    const createDOM = body => {
+        const {document} = new JSDOM(body, {
+            url: `http://localhost:${port}`,
+            runScripts: 'dangerously',
+            resources: 'usable'
+        }).window;
+        return document;
+    };
 
     expect.addAssertion('<HTMLDocument> to have been rendered on the server', function (expect, document)  {
         expect(
