@@ -39,10 +39,10 @@ const template = `<div id="app" class="lemma-widget">
 	</div>
 </div>`;
 
-module.exports = ( function ( mw ) {
-	'use strict';
+import Lemma from "../datamodel/Lemma.js";
 
-	var Lemma = require( "../datamodel/Lemma.js" );
+export default ( function ( mw ) {
+	'use strict';
 
 	function copyLemmaList( list ) {
 		var result = [];
