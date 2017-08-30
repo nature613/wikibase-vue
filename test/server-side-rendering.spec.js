@@ -12,13 +12,7 @@ describe('Vue SSR', () => {
     server.listen(3001);
 
     it('returns 200 with HTML on POST /lemma-widget', async () => {
-        const response = await fetch(`http://localhost:${port}/lemma-widget`, {
-            method: 'POST',
-            headers: {
-                contentType: 'application/json'
-            },
-            body: JSON.stringify({lemmas:[]})
-        });
+        const response = await requestWidget({lemmas:[]});
 
         const body = await response.text();
 
@@ -31,19 +25,12 @@ describe('Vue SSR', () => {
     })
 
     it('renders a lemma from the request payload', async () => {
-        const response = await fetch(`http://localhost:${port}/lemma-widget`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-				        lemmas: [{
-                    value: 'my value',
-                    language: 'en'
-                }]
-            })
+        const response = await requestWidget({
+				    lemmas: [{
+                value: 'my value',
+                language: 'en'
+            }]
         });
-
         const body = await response.text();
 
         expect(response.status, 'to be', 200);
@@ -55,19 +42,12 @@ describe('Vue SSR', () => {
     })
 
     it('renders on the server and then picks up on the client', async () => {
-        const response = await fetch(`http://localhost:${port}/lemma-widget`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-				        lemmas: [{
-                    value: 'my value',
-                    language: 'en'
-                }]
-            })
+        const response = await requestWidget({
+				    lemmas: [{
+                value: 'my value',
+                language: 'en'
+            }]
         });
-
         const body = await response.text();
 
         const {document} = new JSDOM(body, {
@@ -89,6 +69,17 @@ describe('Vue SSR', () => {
             'to have attribute', {'data-server-rendered': undefined }
         );
     })
+
+    const requestWidget = (body) => fetch(
+        `http://localhost:${port}/lemma-widget`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        });
+
 });
 
 const delay = delay => {
