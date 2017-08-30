@@ -26,5 +26,5 @@ export default function(state) {
     const lemmas = state.lemmas.map(lemma => new Lemma(lemma.value, lemma.language));
     const store = createStore(lemmas);
     const newLemmaWidget = require('./widgets/LemmaWidget.newLemmaWidget.js');
-    return new Vue(Object.assign({store:store}, newLemmaWidget(store)));
+    return new Vue(Object.assign({store:store}, newLemmaWidget()));
 }

@@ -53,12 +53,7 @@ module.exports = ( function ( mw ) {
 		return result;
 	}
 
-	/**
-	 * @callback wikibase.lexeme.widgets.LemmaWidget.newComponent
-	 *
-	 * @param {Vuex.Store} store
-	 */
-	return function ( store ) {
+	return function ( ) {
 		return {
 			template: template,
 			data() {
