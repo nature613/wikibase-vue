@@ -30,14 +30,18 @@ console.log('Server started.');
 const replaceServerOnServerChange = () => {
     if(module.hot) {
         console.log('Hot Module Reloading activated.');
-	      module.hot.accept("./server.js", function() {
+	      module.hot.accept("./server.js", () => {
             console.log('Hot-reloading server due to server change');
             replaceExpressApp();
 	      });
-        module.hot.accept('../../build/vue-ssr-server-bundle.json', function () {
+
+        module.hot.accept([
+            '../../build/vue-ssr-server-bundle.json',
+            '../../build/vue-ssr-client-manifest.json'
+        ], () => {
             console.log('Hot-reloading server due to application bundle change');
             replaceExpressApp();
-        })
+        });
     }
 }
 
