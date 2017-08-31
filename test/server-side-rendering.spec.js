@@ -20,8 +20,14 @@ describe('Vue SSR', () => {
     })
 
     const buildLemmasPayload = lemmas => {
-        return { lemmas };
+        return lemmas.reduce(( result, lemma ) => {
+            result[lemma.language] = lemma;
+            return result;
+        }, {});
     };
+
+
+
     it('renders a lemma from the request payload', async () => {
         const response = await requestWidget([{value: 'my value', language: 'foo'}]);
         const body = await response.text();
@@ -46,8 +52,8 @@ describe('Vue SSR', () => {
     })
 
     const validData = [{
-            value: 'my value',
-            language: 'en'
+        value: 'my value',
+        language: 'en'
     }];
 
 

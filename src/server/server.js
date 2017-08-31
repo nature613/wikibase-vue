@@ -40,7 +40,7 @@ module.exports = () => {
   app.post('/lemma-widget', function (req, res) {
       const context = {
           state: {
-              lemmas: req.body.lemmas || []
+              lemmas: req.body.lemmas && Object.values( req.body.lemmas ) || []
           }
       }
 
