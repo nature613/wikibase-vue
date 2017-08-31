@@ -12,20 +12,18 @@ describe('Vue SSR', () => {
     server.listen(3001);
 
     it('returns 200 with HTML on POST /lemma-widget', async () => {
-        const response = await requestWidget({lemmas:[]});
+        const response = await requestWidget([]);
 
         const body = await response.text();
 
         expect(response.status, 'to be', 200);
     })
 
+    const buildLemmasPayload = lemmas => {
+        return { lemmas };
+    };
     it('renders a lemma from the request payload', async () => {
-        const response = await requestWidget({
-				    lemmas: [{
-                value: 'my value',
-                language: 'en'
-            }]
-        });
+        const response = await requestWidget([{value: 'my value', language: 'foo'}]);
         const body = await response.text();
 
         expect(
@@ -47,21 +45,20 @@ describe('Vue SSR', () => {
 
     })
 
-    const validData = {
-				lemmas: [{
+    const validData = [{
             value: 'my value',
             language: 'en'
-        }]
-    }
+    }];
 
-    const requestWidget = (body) => fetch(
+
+    const requestWidget = (lemmas) => fetch(
         `http://localhost:${port}/lemma-widget`,
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(buildLemmasPayload(lemmas))
         });
 
     const createDOM = body => {
