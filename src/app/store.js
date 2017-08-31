@@ -1,6 +1,6 @@
-import Vuex from 'vuex';
-import newLemmaWidgetStore from './widgets/LemmaWidget.newLemmaWidgetStore';
+const Vuex  = require('vuex');
+const newLemmaWidgetStore = require( './widgets/LemmaWidget.newLemmaWidgetStore');
 
-export default (lemmas) => {
+module.exports = (lemmas) => {
     return new Vuex.Store( newLemmaWidgetStore( null, lemmas, '', '' ) );
 }
