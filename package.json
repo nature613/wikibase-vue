@@ -10,7 +10,6 @@
     "test": "npm run build && jasmine ./test/*.spec.js"
   },
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
