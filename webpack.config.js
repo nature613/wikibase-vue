@@ -16,6 +16,7 @@ const baseConfig ={
 };
 
 const clientConfig = merge(baseConfig, {
+    name: 'clientApp',
     entry:[ './src/app/app-client.js' ],
     target: 'web',
     plugins: [
@@ -28,6 +29,7 @@ const clientConfig = merge(baseConfig, {
 });
 
 const serverConfig = merge(baseConfig, {
+    name: 'serverApp',
     entry: [ './src/app/app-server.js' ],
     target: 'node',
     devtool: 'source-map',

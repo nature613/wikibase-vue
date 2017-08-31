@@ -6,10 +6,8 @@ const Vuex = require('vuex');
 const { createBundleRenderer } = require('vue-server-renderer')
 
 const fs = require('fs');
-const clientManifest = JSON.parse(fs.readFileSync('./build/vue-ssr-client-manifest.json'));
-const serverBundle = JSON.parse(fs.readFileSync('./build/vue-ssr-server-bundle.json'));
 
-module.exports = () => {
+module.exports = (serverBundle, clientManifest) => {
   const app = express();
 
   const renderer = createBundleRenderer(serverBundle, {
