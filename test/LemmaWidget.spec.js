@@ -2,7 +2,8 @@
  * @license GPL-2.0+
  */
 describe( 'wikibase.lexeme.widgets.LemmaWidget', function () {
-  require('jsdom-global')();
+  const prepareGlobalJSDOM = require('jsdom-global');
+  let cleanupGlobalJsdom = prepareGlobalJSDOM();
   global.mediaWiki = {};
 	var sinon = require( 'sinon' );
 	var expect = require( 'unexpected' ).clone();
@@ -19,6 +20,15 @@ describe( 'wikibase.lexeme.widgets.LemmaWidget', function () {
 	var newLemmaWidget = require( '../src/app/widgets/LemmaWidget.newLemmaWidget.js');
 	var newLemmaWidgetStore = require( '../src/app/store.js' );
 	var Lemma = require( '../src/app/datamodel/Lemma.js' );
+
+  beforeEach(() => {
+      cleanupGlobalJSDOM = prepareGlobalJSDOM();
+  });
+
+  afterEach(() => {
+      cleanupGlobalJSDOM();
+      expect(global.document, 'to be undefined');
+  });
 
 	it( 'initialize widget with one lemma', function () {
 		var widget = newWidget( [ new Lemma( 'hello', 'en' ) ] );
