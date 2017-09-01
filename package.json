@@ -26,6 +26,7 @@
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
     "sinon": "^3.2.1",
+    "start-server-webpack-plugin": "^2.2.0",
     "unexpected": "^10.33.2",
     "unexpected-dom": "^4.0.0",
     "unexpected-sinon": "^10.8.2",
