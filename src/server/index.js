@@ -13,7 +13,6 @@ const main = () => {
     let currentServerBundle;
     let currentClientManifest;
 
-    console.log('ppath', webpackConfig[1].output.publicPath);
     const httpServer = http.createServer();
     const compiler = webpack(webpackConfig);
     const devMiddleware = webpackDevMiddleware(compiler, {

@@ -6,7 +6,6 @@
   "scripts": {
     "build": "rm -rf ./build/ && webpack --config ./webpack.config.js",
     "start": "webpack --config webpack.server.config.js",
-    "start-in-docker": "npm run build && nodemon -L ./src/server/index.js",
     "test": "jasmine ./test/*.spec.js"
   },
   "author": "",
@@ -14,7 +13,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "module-alias": "^2.0.1",
-    "nodemon": "^1.11.0",
     "vue": "^2.4.2",
     "vue-server-renderer": "^2.4.2",
     "vuex": "^2.3.1",

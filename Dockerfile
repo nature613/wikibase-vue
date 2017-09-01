@@ -9,4 +9,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "npm", "run", "start-in-docker" ]
+CMD [ "npm", "run", "start" ]
