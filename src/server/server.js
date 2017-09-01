@@ -13,7 +13,7 @@ module.exports = (serverBundle, clientManifest, devMiddleware) => {
     if(clientManifest === undefined) throw new Error('Missing clientManifest');
     if(serverBundle === undefined) throw new Error('Missing serverBundle');
   const renderer = createBundleRenderer(serverBundle, {
-      runInNewContext: true,
+      runInNewContext: 'once',
       clientManifest,
       template: `<!--vue-ssr-outlet-->`
   })
