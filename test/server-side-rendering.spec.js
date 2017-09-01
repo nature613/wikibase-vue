@@ -10,7 +10,9 @@ const clientManifest = require(  '../build/vue-ssr-client-manifest.json' );
 
 describe('Vue SSR', () => {
     const port = 3001;
-    const server = createServer(serverBundle, clientManifest);
+    const express = require('express');
+    const server = createServer(serverBundle, clientManifest, express.static('./build'));
+
     server.listen(3001);
 
     it('returns 200 with HTML on POST /lemma-widget', async () => {

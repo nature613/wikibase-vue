@@ -17,7 +17,8 @@
     "nodemon": "^1.11.0",
     "vue": "^2.4.2",
     "vue-server-renderer": "^2.4.2",
-    "vuex": "^2.3.1"
+    "vuex": "^2.3.1",
+    "webpack-dev-middleware": "^1.12.0"
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",

@@ -7,9 +7,11 @@ const { createBundleRenderer } = require('vue-server-renderer')
 
 const fs = require('fs');
 
-module.exports = (serverBundle, clientManifest) => {
+module.exports = (serverBundle, clientManifest, devMiddleware) => {
   const app = express();
 
+    if(clientManifest === undefined) throw new Error('Missing clientManifest');
+    if(serverBundle === undefined) throw new Error('Missing serverBundle');
   const renderer = createBundleRenderer(serverBundle, {
       runInNewContext: true,
       clientManifest,
@@ -19,7 +21,7 @@ module.exports = (serverBundle, clientManifest) => {
   var bodyParser = require('body-parser')
   app.use( bodyParser.json() );
 
-  app.get(/\.js$/, express.static('./build'));
+  app.use(devMiddleware);
 
   app.get('/lemma-widget', (req, res) => {
     const context = {
