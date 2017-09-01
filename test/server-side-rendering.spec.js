@@ -21,7 +21,7 @@ describe('Vue SSR', () => {
             const serverBundle = extractServerBundle(result);
             const clientManifest = extractClientManifest(result);
             const server = createServer(serverBundle, clientManifest, devMiddleware);
-    server.listen(3001);
+            server.listen(3001);
             done();
         });
     });
@@ -33,17 +33,6 @@ describe('Vue SSR', () => {
 
         expect(response.status, 'to be', 200);
     })
-
-    const buildLemmasPayload = lemmas => {
-        const requestLemmas = lemmas.reduce(( result, lemma ) => {
-            result[lemma.language] = lemma;
-            return result;
-        }, {});
-
-        return { lemmas: requestLemmas };
-    };
-
-
 
     it('renders a lemma from the request payload', async () => {
         const response = await requestWidget(validData);
@@ -91,6 +80,15 @@ describe('Vue SSR', () => {
             resources: 'usable'
         }).window;
         return document;
+    };
+
+    const buildLemmasPayload = lemmas => {
+        const requestLemmas = lemmas.reduce(( result, lemma ) => {
+            result[lemma.language] = lemma;
+            return result;
+        }, {});
+
+        return { lemmas: requestLemmas };
     };
 
     expect.addAssertion('<HTMLDocument> to have been rendered on the server', function (expect, document)  {
