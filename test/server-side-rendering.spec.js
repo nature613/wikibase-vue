@@ -15,13 +15,13 @@ describe('Vue SSR', () => {
 
     beforeAll((done) => {
         const compiler = webpack(webpackConfig);
-        const devMiddleware = webpackDevMiddleware(compiler);
+       const devMiddleware = webpackDevMiddleware(compiler);
 
         devMiddleware.waitUntilValid((result) => {
             const serverBundle = extractServerBundle(result);
             const clientManifest = extractClientManifest(result);
             const server = createServer(serverBundle, clientManifest, devMiddleware);
-            server.listen(3001);
+            server.listen(port);
             done();
         });
     });
