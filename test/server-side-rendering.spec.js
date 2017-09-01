@@ -3,17 +3,28 @@ const unexpectedDOM = require('unexpected-dom');
 const expect = unexpected.clone().use(unexpectedDOM);
 const fetch = require('isomorphic-fetch');
 const {JSDOM} = require('jsdom');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const createServer = require('../src/server/server.js');
-const serverBundle = require('../build/vue-ssr-server-bundle.json');
-const clientManifest = require(  '../build/vue-ssr-client-manifest.json' );
+const webpackConfig = require('../webpack.config.js');
+const {extractClientManifest, extractServerBundle} = require('../src/extract-webpack-stats');
 
 describe('Vue SSR', () => {
     const port = 3001;
-    const express = require('express');
-    const server = createServer(serverBundle, clientManifest, express.static('./build'));
 
+    beforeAll((done) => {
+        const compiler = webpack(webpackConfig);
+        const devMiddleware = webpackDevMiddleware(compiler);
+
+        devMiddleware.waitUntilValid((result) => {
+            const serverBundle = extractServerBundle(result);
+            const clientManifest = extractClientManifest(result);
+            const server = createServer(serverBundle, clientManifest, devMiddleware);
     server.listen(3001);
+            done();
+        });
+    });
 
     it('returns 200 with HTML on POST /lemma-widget', async () => {
         const response = await requestWidget([]);

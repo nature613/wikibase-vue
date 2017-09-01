@@ -7,7 +7,7 @@
     "build": "rm -rf ./build/ && webpack --config ./webpack.config.js",
     "start": "webpack --config webpack.server.config.js",
     "start-in-docker": "npm run build && nodemon -L ./src/server/index.js",
-    "test": "npm run build && jasmine ./test/*.spec.js"
+    "test": "jasmine ./test/*.spec.js"
   },
   "author": "",
   "dependencies": {
