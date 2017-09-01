@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const webpackConfig = require('../../webpack.config.js');
+const {extractClientManifest, extractServerBundle} = require('../extract-webpack-stats');
 
 const main = () => {
     let currentExpressApp;
@@ -61,24 +62,5 @@ const replaceExpressApp = (httpServer, oldExpressApp, devMiddleware, serverBundl
     httpServer.on('request', newExpressApp);
     return newExpressApp;
 }
-
-const extractClientManifest = result => JSON.parse(
-    result
-        .stats
-        .find(x => x.compilation.name === 'clientApp')
-        .compilation
-        .assets['vue-ssr-client-manifest.json']
-        .source()
-);
-const extractServerBundle = ( {stats} ) => JSON.parse(
-    stats
-        .find(x => x.compilation.name === 'serverApp')
-        .compilation
-        .assets['vue-ssr-server-bundle.json']
-        .source()
-);
-
-
-
 main();
 
