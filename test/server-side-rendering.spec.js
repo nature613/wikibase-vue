@@ -20,7 +20,7 @@ describe('Vue SSR', () => {
         devMiddleware.waitUntilValid((result) => {
             const serverBundle = extractServerBundle(result);
             const clientManifest = extractClientManifest(result);
-            const server = createServer(serverBundle, clientManifest, devMiddleware);
+            const server = createServer(serverBundle, clientManifest, [devMiddleware]);
             server.listen(port);
             done();
         });

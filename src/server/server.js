@@ -7,7 +7,7 @@ const { createBundleRenderer } = require('vue-server-renderer')
 
 const fs = require('fs');
 
-module.exports = (serverBundle, clientManifest, devMiddleware) => {
+module.exports = (serverBundle, clientManifest, middlewares) => {
   const app = express();
 
     if(clientManifest === undefined) throw new Error('Missing clientManifest');
@@ -21,7 +21,9 @@ module.exports = (serverBundle, clientManifest, devMiddleware) => {
   var bodyParser = require('body-parser')
   app.use( bodyParser.json() );
 
-  app.use(devMiddleware);
+  middlewares.forEach(middleware => {
+    app.use(middleware);
+  });
 
   app.get('/lemma-widget', (req, res) => {
     const context = {

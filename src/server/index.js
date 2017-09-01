@@ -3,6 +3,7 @@ const path = require('path')
 const http = require('http');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const webpackConfig = require('../../webpack.config.js');
 const {extractClientManifest, extractServerBundle} = require('../extract-webpack-stats');
@@ -12,15 +13,19 @@ const main = () => {
     let currentServerBundle;
     let currentClientManifest;
 
+    console.log('ppath', webpackConfig[1].output.publicPath);
     const httpServer = http.createServer();
     const compiler = webpack(webpackConfig);
-    const devMiddleware = webpackDevMiddleware(compiler);
+    const devMiddleware = webpackDevMiddleware(compiler, {
+        noInfo: true
+    });
+    const hotMiddleware = webpackHotMiddleware(compiler);
 
     const replaceServer =  () => {
         currentExpressApp = replaceExpressApp(
             httpServer,
             currentExpressApp,
-            devMiddleware,
+            [devMiddleware, hotMiddleware],
             currentServerBundle,
             currentClientManifest
         );
@@ -39,6 +44,7 @@ const main = () => {
             console.log('Hot-reloading server due to server change');
             replaceServer();
         });
+        module.hot.accept();
     }
 
     process.on('unhandledRejection', function (reason, promise) {

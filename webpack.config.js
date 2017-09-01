@@ -17,9 +17,11 @@ const baseConfig ={
 
 const clientConfig = merge(baseConfig, {
     name: 'clientApp',
-    entry:[ './src/app/app-client.js' ],
+    entry:[ 'webpack-hot-middleware/client', './src/app/app-client.js' ],
     target: 'web',
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: "manifest",
             minChunks: Infinity
@@ -34,6 +36,7 @@ const serverConfig = merge(baseConfig, {
     target: 'node',
     devtool: 'source-map',
     output: {
+        publicPath: '/',
         libraryTarget: 'commonjs2'
     },
     externals: nodeExternals(),
