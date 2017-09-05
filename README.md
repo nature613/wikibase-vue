@@ -1,7 +1,7 @@
 # vue-template-service
 
 (Note that the service name is currently misleading and subject to change. It
-was initally a spike to create a generic vue template rendering service, but
+was initially a spike to create a generic vue template rendering service, but
 then turned into a demo of completely decoupling the view layer from the
 mediawiki stack)
 
@@ -14,14 +14,14 @@ mediawiki stack)
   write ES2017 instead of ES5 without losing browser compatibility (this will
   need some polyfilling and integration tests which are out of scope for the
   spike).
-- Reduce devlopment feedback cycle and developer experience: By testing in
-  isoloation and using modern development features like hot reladoing, we reduce
+- Reduce development feedback cycle and developer experience: By testing in
+  isolation and using modern development features like hot reladoing, we reduce
   cycle times both locally and in the continuous integration phase.
 - Move towards continuous deployment: Decoupling the service will make it much
   easier to move towards adopting continuous deployment practices and deliver
   value faster.
 - Remove accidental complication: We are aiming to break volatile dependencies,
-  ban all global objects and remove unneccessary layers of custom abstractions
+  ban all global objects and remove unnecessary layers of custom abstractions
   such as the resource loader aliases, which already broke standard JS tooling
   and created hard to debug errors during this spike.
 - Decrease setup cost: The Frontend can be used without a running mediawiki. The
