@@ -31,6 +31,6 @@ mediawiki stack)
 
 ## Run dev
 
-docker build -t vue-server .
+`docker build -t vue-server .`
 
-docker run -p 3000:3000 vue-server
+`docker run -p 3000:3000 -v $(pwd):/usr/src/app vue-server`
