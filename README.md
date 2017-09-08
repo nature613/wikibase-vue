@@ -34,3 +34,6 @@ mediawiki stack)
 `docker build -t vue-server .`
 
 `docker run -p 3000:3000 -v $(pwd):/usr/src/app vue-server`
+
+Example page:
+http://localhost:3000/lemma-widget
