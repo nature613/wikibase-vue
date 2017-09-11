@@ -37,3 +37,6 @@ mediawiki stack)
 
 Example page:
 http://localhost:3000/lemma-widget
+
+Example service:
+http://wikibase-vue.wmflabs.org/lexeme-widget
