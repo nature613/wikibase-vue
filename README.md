@@ -1,7 +1,6 @@
-# vue-template-service
+# wikibase-vue
 
-(Note that the service name is currently misleading and subject to change. It
-was initially a spike to create a generic vue template rendering service, but
+( It was initially a spike to create a generic vue template rendering service, but
 then turned into a demo of completely decoupling the view layer from the
 mediawiki stack)
 
@@ -33,7 +32,7 @@ mediawiki stack)
 
 `docker build -t vue-server .`
 
-`docker run -p 3000:3000 -v $(pwd):/usr/src/app vue-server`
+`docker run -p 3000:3000 -v $(pwd):/usr/src/app -v /usr/src/app/node_modules vue-server`
 
 Example page:
 http://localhost:3000/lemma-widget
